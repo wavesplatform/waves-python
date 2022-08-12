@@ -1,0 +1,14 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+
+# Idea files
+.idea/
+
+# Virtual enviroment
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Byte code
+*.pyc
+

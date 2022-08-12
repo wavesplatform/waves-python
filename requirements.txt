@@ -1,0 +1,4 @@
+requests
+base58==2.1.1
+pydantic
+
