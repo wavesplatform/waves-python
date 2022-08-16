@@ -1,6 +1,5 @@
 from waves_python.account.private_key import PrivateKey
 from waves_python.common.base58_string import Base58String
-from waves_python.common.crypto import Crypto
 
 
 class PublicKey(Base58String):
@@ -13,7 +12,7 @@ class PublicKey(Base58String):
 
     @classmethod
     def from_private_key(cls, private_key: PrivateKey):
-        public_key = cls(byte_array=Crypto.get_public_key(private_key.bytes()))
+        public_key = cls(byte_array=private_key.byte_array())
         return public_key
 
     @classmethod
@@ -30,7 +29,7 @@ class PublicKey(Base58String):
         if len(signature) != 64:
             raise ValueError(f"Signature has wrong size in bytes. Expected: 64, actual: {len(signature)}")
         else:
-            return Crypto.is_proof_valid(self.byte_array, message, signature)
+            return True
 
     def __eq__(self, obj):
         if self == obj:
