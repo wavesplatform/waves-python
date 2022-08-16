@@ -79,7 +79,7 @@ class Node:
 
     def get_address_data_by_keys(self, address: Address, keys: List[str] = None) -> List[AddressData]:
         response_json = self.post(f'{self.uri}/addresses/data/{address.base58_str}', AddressKeys(keys=keys))
-        if response_json.get('error'):
+        if response_json.get('error') or response_json.get('error') == 0:
             return NodeException.from_dict(response_json)
         return [AddressData.from_dict(resp) for resp in response_json]
 
@@ -101,7 +101,7 @@ class Node:
 
     def get_aliases_by_address(self, address: Address) -> List[Alias]:
         response_json = self.get(f'{self.uri}/alias/by-address/{address.base58_str}')
-        if response_json.get('error'):
+        if not isinstance(response_json, list) and  response_json.get('error'):
             return NodeException.from_dict(response_json)
         return [Alias(name=resp) for resp in response_json]
 
@@ -197,7 +197,7 @@ class Node:
 
     def get_blocks_headers(self, height_from: int, height_to: int) -> List[BlockHeaders]:
         response_json = self.get(f'{self.uri}/blocks/headers/seq/{height_from}/{height_to}')
-        if response_json.get('error'):
+        if not isinstance(response_json, list) and response_json.get('error'):
             return NodeException.from_dict(response_json)
         return [BlockHeaders.from_dict(resp) for resp in response_json]
 
@@ -227,7 +227,7 @@ class Node:
 
     def get_blocks_by_address(self, address: Address, height_from: int, height_to: int) -> List[Block]:
         response_json = self.get(f'{self.uri}/blocks/address/{address.base58_str}/{height_from}/{height_to}')
-        if response_json.get('error'):
+        if not isinstance(response_json, list) and  response_json.get('error'):
             return NodeException.from_dict(response_json)
         return [Block.from_dict(resp) for resp in response_json]
 
@@ -261,7 +261,7 @@ class Node:
 
     def get_leases_info(self, lease_ids: Ids) -> List[LeaseInfo]:
         response_json = self.post(f'{self.uri}/leasing/info', lease_ids)
-        if response_json.get('error'):
+        if response_json.get('error') or response_json.get('error') == 0:
             return NodeException.from_dict(response_json)
         return [LeaseInfo.from_dict(resp) for resp in response_json]
 
