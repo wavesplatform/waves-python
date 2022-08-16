@@ -15,6 +15,7 @@ pip install waves-python
 ```python
 from waves_python.api.node import Node, Profile
 
+
 node = Node(Profile.TESTNET)
 print(f'Node version: {node.get_version()}')
 ```
@@ -22,8 +23,13 @@ print(f'Node version: {node.get_version()}')
 - Addresses:
 
 ```python
-address = Address.from_str('your_encoded_address')
-balance = node.get_balance(address)
+from waves_python.api.node import Node, Profile
+from waves_python.account.address import Address
+
+
+address = Address(base58_str='3Mx3zmXrMcLFCafMuPtXAzR4ZPVeZYb6qLz')
+node = Node(Profile.TESTNET)
+balance = node.get_address_balance(address)
 print(f'Balance: {balance}')
 ```
 
