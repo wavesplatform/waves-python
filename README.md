@@ -1,5 +1,7 @@
 Python client library for interacting with Waves blockchain platform.  
-[![PyPI version](https://badge.fury.io/py/waves-python.svg)](https://badge.fury.io/py/waves-python)
+
+## Package
+waves-python [![PyPI version](https://badge.fury.io/py/waves-python.svg)](https://badge.fury.io/py/waves-python)
 
 ## Installation
 ```bash
