@@ -8,8 +8,8 @@ setup(
     url='https://github.com/wavesplatform/waves-python',
     license='',
     install_requires=['requests',
-                      'base58>=2.1.0',
-                      'dataclasses-json>=0.5.7'
+                      'base58',
+                      'dataclasses-json'
                       ],
     author='Dmitry Rozhaev',
     author_email='admin@waveslabs.com',
