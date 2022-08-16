@@ -1,5 +1,5 @@
 from dataclasses import field, dataclass
-from dataclasses_json import config, dataclass_json
+from dataclasses_json import config, dataclass_json, LetterCase
 
 from waves_python.model.node_model import NodeModel
 
