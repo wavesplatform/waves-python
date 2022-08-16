@@ -13,6 +13,8 @@ pip install waves-python
 - Node basics:
 
 ```python
+from waves_python.api.node import Node, Profile
+
 node = Node(Profile.TESTNET)
 print(f'Node version: {node.get_version()}')
 ```
